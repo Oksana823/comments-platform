@@ -26,9 +26,10 @@ redis.call('INCRBY', stockKey, -1)
 -- 3.4 记录用户已下单
 redis.call('SADD', orderKey, userId)
 
+--redis stream 方法
+--redis.call('XADD', 'stream.orders', '*',
+--           'userId', userId,
+--           'voucherId', voucherId,
+--           'id', orderId)
 
-redis.call('XADD', 'stream.orders', '*',
-           'userId', userId,
-           'voucherId', voucherId,
-           'id', orderId)
 return 0

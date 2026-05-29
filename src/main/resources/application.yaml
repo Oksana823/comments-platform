@@ -26,7 +26,16 @@ spring:
           max-idle: 10
           min-idle: 1
           time-between-eviction-runs: 10s
-
+  # ====================== RabbitMQ 配置 ======================
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual
   # ====================== Jackson 配置 ======================
   jackson:
     default-property-inclusion: non_null
