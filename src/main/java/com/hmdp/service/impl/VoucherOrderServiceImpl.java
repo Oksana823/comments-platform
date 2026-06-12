@@ -131,6 +131,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         if (count > 0) {
             // 用户已经购买过了
             log.error("用户已经购买过一次！");
+            return;
         }
         // 6.扣减库存
         boolean success = seckillVoucherService.update()
@@ -140,6 +141,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         if (!success) {
             // 扣减失败
             log.error("库存不足！");
+            return;
         }
         save(voucherOrder);
     }
